@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uilogin/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -137,10 +138,9 @@ class _LoginState extends State<Login> {
                               fontWeight: FontWeight.w600)),
                     ],
                   ),
-                  // onPressed: () => Navigator.of(context).pushReplacement(
-                  //     MaterialPageRoute(
-                  //         builder: (BuildContext context) => GetVerifikasi()))),
-                  onPressed: () {}),
+                  onPressed: () => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => const Home()))),
             ),
           ],
         ) /* add child content here */,

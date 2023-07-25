@@ -75,8 +75,6 @@ class _VerifikasiState extends State<Verifikasi> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
               child: TextFormField(
-                autocorrect: false,
-                autovalidateMode: false,
                 maxLength: 12,
                 keyboardType: TextInputType.number,
                 style: TextStyle(fontSize: 14.0),
