@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:uilogin/login.dart';
 import 'package:uilogin/succes.dart';
-import 'package:uilogin/verifikasi.dart';
 
 class GetVerifikasi extends StatefulWidget {
   const GetVerifikasi({super.key});
@@ -13,6 +12,8 @@ class GetVerifikasi extends StatefulWidget {
 }
 
 class _GetVerifikasiState extends State<GetVerifikasi> {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
   bool loading = false;
   load() {
     if (loading = true) {
@@ -46,7 +47,21 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        // Here you can write your code for open new view
+        _showNotification();
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _initializeNotifications();
+
     bool _onEditing = true;
     String? _code;
     return Scaffold(
@@ -136,6 +151,34 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
           )
         ],
       ),
+    );
+  }
+
+  void _initializeNotifications() async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    final InitializationSettings initializationSettings =
+        InitializationSettings(android: initializationSettingsAndroid);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+
+  // Membuat dan menampilkan notifikasi
+  Future<void> _showNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails('your_channel_id', 'your_channel_name',
+            importance: Importance.max,
+            priority: Priority.high,
+            color: Colors.deepPurple);
+
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.show(
+      0, // ID notifikasi (dibutuhkan jika ingin memperbarui atau menghapus notifikasi)
+      'Kode Verifikasi', // Judul notifikasi
+      'Hai Dery, kode verifikasi Kamu adalah 22129 ', // Isi notifikasi
+      platformChannelSpecifics,
     );
   }
 }
