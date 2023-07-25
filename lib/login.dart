@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uilogin/home.dart';
 
@@ -10,6 +11,38 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool loading = false;
+  load() {
+    if (loading = true) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+                title: const Text(
+                  "Tunggu ya",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                content: Container(
+                    child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      child: const SpinKitThreeBounce(
+                        color: const Color.fromRGBO(116, 95, 219, 100),
+                        size: 30.0,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
+                    const Text("Memuat...")
+                  ],
+                )));
+          });
+    } else {}
+  }
+
   bool _secureText = true;
   showHide() {
     setState(() {
@@ -117,9 +150,9 @@ class _LoginState extends State<Login> {
             ),
             const SizedBox(height: 30.0),
             SizedBox(
-              width: 320,
-              height: 55,
-              child: ElevatedButton(
+                width: 320,
+                height: 55,
+                child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(116, 95, 219, 100),
                     elevation: 3.0,
@@ -138,10 +171,26 @@ class _LoginState extends State<Login> {
                               fontWeight: FontWeight.w600)),
                     ],
                   ),
-                  onPressed: () => Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => const Home()))),
-            ),
+                  // onPressed: () => Navigator.of(context).pushReplacement(
+                  //     MaterialPageRoute(
+                  //         builder: (BuildContext context) => const Home()))),
+                  onPressed: () {
+                    setState(() {
+                      loading = true;
+                    });
+                    load();
+                    Future.delayed(const Duration(seconds: 3), () {
+                      setState(() {
+                        // Here you can write your code for open new view
+                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Home()));
+                      });
+                    });
+                  },
+                )),
           ],
         ) /* add child content here */,
       ),
