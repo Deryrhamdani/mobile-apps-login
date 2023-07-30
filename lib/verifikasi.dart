@@ -39,7 +39,7 @@ class _VerifikasiState extends State<Verifikasi> {
               height: 50.0,
             ),
             const Text(
-              'Kode Verifikasi',
+              'Verifikasi',
               style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w700,
