@@ -48,7 +48,6 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
@@ -65,6 +64,7 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
     bool _onEditing = true;
     String? _code;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(116, 95, 219, 100),
       appBar: AppBar(
         elevation: 0,

@@ -16,10 +16,10 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Center(
           child: Column(children: [
-            const Text(
+            Text(
               'Login Berhasil',
               style: TextStyle(
                 fontSize: 22.0,
@@ -27,10 +27,10 @@ class _HomeState extends State<Home> {
                 color: Colors.orange,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 50.0,
             ),
-            const SizedBox(
+            SizedBox(
               height: 300,
               child: Image(
                 image: AssetImage(
@@ -38,10 +38,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 80.0,
             ),
-            const Text(
+            Text(
               'Follow \n@deryrhamdani',
               textAlign: TextAlign.center,
               style: TextStyle(
