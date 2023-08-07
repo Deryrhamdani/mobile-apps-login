@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +31,7 @@ class _LoginState extends State<Login> {
                   children: [
                     Container(
                       child: const SpinKitThreeBounce(
-                        color: const Color.fromRGBO(116, 95, 219, 100),
+                        color: Color.fromRGBO(116, 95, 219, 100),
                         size: 30.0,
                       ),
                     ),
@@ -56,7 +58,7 @@ class _LoginState extends State<Login> {
       resizeToAvoidBottomInset: false,
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
             fit: BoxFit.cover,
@@ -87,34 +89,33 @@ class _LoginState extends State<Login> {
             ),
             const SizedBox(height: 30.0),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 45.0),
+              padding: const EdgeInsets.symmetric(horizontal: 45.0),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
               child: TextFormField(
                 keyboardType: TextInputType.multiline,
-                style: TextStyle(fontSize: 14.0),
-                // obscureText: _secureText,
+                style: const TextStyle(fontSize: 14.0),
                 decoration: InputDecoration(
                     hintText: 'Nama pengguna',
                     border: OutlineInputBorder(
                         borderSide: const BorderSide(width: 50),
                         borderRadius: BorderRadius.circular(10.0)),
-                    prefixIcon: Icon(Icons.account_circle)),
+                    prefixIcon: const Icon(Icons.account_circle)),
               ),
             ),
             const SizedBox(height: 30.0),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 45.0),
+              padding: const EdgeInsets.symmetric(horizontal: 45.0),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
               child: TextFormField(
                 keyboardType: TextInputType.multiline,
-                style: TextStyle(fontSize: 14.0),
+                style: const TextStyle(fontSize: 14.0),
                 obscureText: _secureText,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                   hintText: 'Kata sandi',
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 50),
@@ -132,10 +133,8 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                  onTap: () {
-                    print('Lupa kata sandi');
-                  },
-                  child: Text(
+                  onTap: () {},
+                  child: const Text(
                     'Lupa kata sandi?',
                     style: TextStyle(
                       fontSize: 12.0,
@@ -143,7 +142,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 50.0,
                 ),
               ],
@@ -154,7 +153,7 @@ class _LoginState extends State<Login> {
                 height: 55,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(116, 95, 219, 100),
+                    backgroundColor: const Color.fromRGBO(116, 95, 219, 100),
                     elevation: 3.0,
                     textStyle: const TextStyle(fontSize: 18.0),
                     minimumSize: const Size.fromHeight(42),
@@ -171,9 +170,6 @@ class _LoginState extends State<Login> {
                               fontWeight: FontWeight.w600)),
                     ],
                   ),
-                  // onPressed: () => Navigator.of(context).pushReplacement(
-                  //     MaterialPageRoute(
-                  //         builder: (BuildContext context) => const Home()))),
                   onPressed: () {
                     setState(() {
                       loading = true;
@@ -181,18 +177,18 @@ class _LoginState extends State<Login> {
                     load();
                     Future.delayed(const Duration(seconds: 3), () {
                       setState(() {
-                        // Here you can write your code for open new view
                         Navigator.pop(context);
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => Home()));
+                                builder: (BuildContext context) =>
+                                    const Home()));
                       });
                     });
                   },
                 )),
           ],
-        ) /* add child content here */,
+        ),
       ),
     );
   }

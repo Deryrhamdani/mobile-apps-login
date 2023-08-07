@@ -113,7 +113,7 @@ class _WellcomeState extends State<Wellcome> {
                     onPressed: () => Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                GetVerifikasi()))),
+                                const GetVerifikasi()))),
               ),
               const SizedBox(height: 80.0),
               SizedBox(
@@ -147,7 +147,8 @@ class _WellcomeState extends State<Wellcome> {
                     ),
                     onPressed: () => Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                            builder: (BuildContext context) => Verifikasi()))),
+                            builder: (BuildContext context) =>
+                                const Verifikasi()))),
               ),
             ],
           ),

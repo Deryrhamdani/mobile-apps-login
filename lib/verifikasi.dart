@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'get_verifikasi.dart';
 
@@ -25,7 +24,7 @@ class _VerifikasiState extends State<Verifikasi> {
       resizeToAvoidBottomInset: false,
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
             fit: BoxFit.cover,
@@ -70,29 +69,24 @@ class _VerifikasiState extends State<Verifikasi> {
             ),
             const SizedBox(height: 30.0),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 45.0),
+              padding: const EdgeInsets.symmetric(horizontal: 45.0),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
               child: TextFormField(
                 maxLength: 12,
                 keyboardType: TextInputType.number,
-                style: TextStyle(fontSize: 14.0),
+                style: const TextStyle(fontSize: 14.0),
                 // obscureText: _secureText,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 50),
                       borderRadius: BorderRadius.circular(10.0)),
-                  prefixIcon: Image(
+                  prefixIcon: const Image(
                     image: AssetImage(
                       'assets/images/+62.png',
                     ),
                   ),
-                  // suffixIcon: IconButton(
-                  //   onPressed: showHide,
-                  //   icon: Icon(
-                  //       _secureText ? Icons.visibility_off : Icons.visibility),
-                  // ),
                 ),
               ),
             ),
@@ -102,7 +96,7 @@ class _VerifikasiState extends State<Verifikasi> {
               height: 55,
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(116, 95, 219, 100),
+                    backgroundColor: const Color.fromRGBO(116, 95, 219, 100),
                     elevation: 3.0,
                     textStyle: const TextStyle(fontSize: 18.0),
                     minimumSize: const Size.fromHeight(42),
@@ -121,7 +115,8 @@ class _VerifikasiState extends State<Verifikasi> {
                   ),
                   onPressed: () => Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                          builder: (BuildContext context) => GetVerifikasi()))),
+                          builder: (BuildContext context) =>
+                              const GetVerifikasi()))),
             ),
           ],
         ) /* add child content here */,

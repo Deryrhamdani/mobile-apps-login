@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code, avoid_unnecessary_containers, no_leading_underscores_for_local_identifiers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -32,7 +34,7 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
                   children: [
                     Container(
                       child: const SpinKitThreeBounce(
-                        color: const Color.fromRGBO(116, 95, 219, 100),
+                        color: Color.fromRGBO(116, 95, 219, 100),
                         size: 30.0,
                       ),
                     ),
@@ -51,7 +53,6 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
     super.initState();
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
-        // Here you can write your code for open new view
         _showNotification();
       });
     });
@@ -85,10 +86,7 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
           const Text(
             'Masukan 5 digit kode verifikasi ',
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 14.0,
-                // fontWeight: FontWeight.w700,
-                color: Colors.white),
+            style: TextStyle(fontSize: 14.0, color: Colors.white),
           ),
           const SizedBox(
             height: 20.0,
@@ -101,25 +99,21 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30.0,
           ),
           OtpTextField(
             autoFocus: true,
             borderRadius: BorderRadius.circular(8.0),
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Colors.white,
             ),
             numberOfFields: 5,
             borderColor: const Color.fromRGBO(116, 95, 219, 100),
             cursorColor: const Color.fromRGBO(116, 95, 219, 100),
-            //set to true to show as box or false to show as dash
-            // showFieldAsBox: true,
-            //runs when a code is typed in
             onCodeChanged: (
               String code,
             ) {},
-
             onSubmit: (String verificationCode) {
               setState(() {
                 loading = true;
@@ -127,12 +121,11 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
               load();
               Future.delayed(const Duration(seconds: 3), () {
                 setState(() {
-                  // Here you can write your code for open new view
                   Navigator.pop(context);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => Succes()));
+                          builder: (BuildContext context) => const Succes()));
                 });
               });
             }, // end onSubmit
@@ -145,7 +138,6 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
                       'Tidak mendapatkan kode? kirim ulang',
                       style: TextStyle(fontSize: 14.0, color: Colors.white),
                     )
-                  // ignore: dead_code
                   : Text('Your code: $_code'),
             ),
           )
@@ -175,9 +167,9 @@ class _GetVerifikasiState extends State<GetVerifikasi> {
         NotificationDetails(android: androidPlatformChannelSpecifics);
 
     await flutterLocalNotificationsPlugin.show(
-      0, // ID notifikasi (dibutuhkan jika ingin memperbarui atau menghapus notifikasi)
+      0,
       'Kode Verifikasi', // Judul notifikasi
-      'Hai Dery, kode verifikasi Kamu adalah 22129 ', // Isi notifikasi
+      'Hai Dery, kode verifikasi Kamu adalah 48639 ',
       platformChannelSpecifics,
     );
   }
